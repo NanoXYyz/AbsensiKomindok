@@ -11,23 +11,32 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
     <style>
       :root {
-        --bg: #060b14;
-        --s1: #0d1525;
-        --s2: #111d30;
-        --bd: #1c2e48;
-        --bd2: #243447;
-        --a1: #3b82f6;
-        --a1h: #60a5fa;
-        --a2: #8b5cf6;
-        --a3: #10b981;
-        --a4: #f59e0b;
-        --red: #ef4444;
-        --tx: #e2e8f5;
-        --tx2: #94a3b8;
-        --tx3: #475569;
-        --r: 18px;
+        --bg: #f0f4f9;
+        --s1: #ffffff;
+        --s2: #f8fafd;
+        --bd: #dde4ee;
+        --bd2: #c9d4e3;
+        --a1: #2563eb;
+        --a1h: #1d4ed8;
+        --a2: #7c3aed;
+        --a3: #059669;
+        --a4: #d97706;
+        --red: #dc2626;
+        --tx: #0f172a;
+        --tx2: #334155;
+        --tx3: #64748b;
+        --tx4: #94a3b8;
+        --r: 16px;
+        --shadow-sm:
+          0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.05);
+        --shadow:
+          0 4px 12px rgba(15, 23, 42, 0.09), 0 2px 4px rgba(15, 23, 42, 0.05);
       }
       *,
       *::before,
@@ -55,13 +64,13 @@
         z-index: 0;
         background:
           radial-gradient(
-            ellipse 600px 400px at 10% 0%,
-            rgba(59, 130, 246, 0.07) 0%,
+            ellipse 700px 500px at 5% -10%,
+            rgba(37, 99, 235, 0.06) 0%,
             transparent 70%
           ),
           radial-gradient(
-            ellipse 500px 400px at 90% 100%,
-            rgba(139, 92, 246, 0.07) 0%,
+            ellipse 600px 500px at 95% 110%,
+            rgba(124, 58, 237, 0.05) 0%,
             transparent 70%
           );
       }
@@ -75,7 +84,7 @@
         min-height: 100vh;
         position: relative;
         z-index: 1;
-        padding-bottom: 56px;
+        padding-bottom: 60px;
       }
 
       /* ─── TOPBAR ─── */
@@ -83,13 +92,14 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 12px 16px;
-        background: rgba(13, 21, 37, 0.85);
+        padding: 10px 16px;
+        background: rgba(255, 255, 255, 0.9);
         border-bottom: 1px solid var(--bd);
         backdrop-filter: blur(16px);
         position: sticky;
         top: 0;
         z-index: 50;
+        box-shadow: 0 1px 4px rgba(15, 23, 42, 0.06);
       }
       .tb-left {
         display: flex;
@@ -97,11 +107,11 @@
         gap: 8px;
       }
       .api-dot {
-        width: 8px;
-        height: 8px;
+        width: 7px;
+        height: 7px;
         border-radius: 50%;
         background: var(--a3);
-        box-shadow: 0 0 8px var(--a3);
+        box-shadow: 0 0 6px var(--a3);
         animation: blink 2.5s ease-in-out infinite;
       }
       @keyframes blink {
@@ -111,23 +121,23 @@
           transform: scale(1);
         }
         50% {
-          opacity: 0.35;
-          transform: scale(0.7);
+          opacity: 0.3;
+          transform: scale(0.65);
         }
       }
       .tb-label {
         font-size: 11px;
         font-weight: 600;
         font-family: "JetBrains Mono", monospace;
-        color: var(--tx2);
+        color: var(--tx3);
       }
       .tb-badge {
         font-size: 9px;
         font-weight: 700;
         font-family: "JetBrains Mono", monospace;
-        background: rgba(59, 130, 246, 0.1);
-        border: 1px solid rgba(59, 130, 246, 0.22);
-        color: var(--a1h);
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        color: var(--a1);
         padding: 3px 9px;
         border-radius: 20px;
         letter-spacing: 0.8px;
@@ -136,38 +146,32 @@
 
       /* ─── HEADER ─── */
       .header {
-        padding: 26px 20px 18px;
+        padding: 24px 20px 14px;
         text-align: center;
       }
       .hlogo {
-        width: 60px;
-        height: 60px;
-        border-radius: 18px;
-        margin: 0 auto 14px;
+        width: 58px;
+        height: 58px;
+        border-radius: 16px;
+        margin: 0 auto 12px;
         background: linear-gradient(135deg, var(--a1), var(--a2));
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 28px;
-        box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+        box-shadow: 0 6px 24px rgba(37, 99, 235, 0.28);
       }
       .header h1 {
-        font-size: 28px;
+        font-size: 26px;
         font-weight: 800;
         letter-spacing: -0.8px;
         line-height: 1.15;
-        background: linear-gradient(
-          135deg,
-          #fff 0%,
-          var(--a1h) 50%,
-          var(--a2) 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: var(--tx);
+      }
+      .header h1 span {
+        color: var(--a1);
       }
       .hsub {
-        margin-top: 6px;
+        margin-top: 5px;
         font-size: 11px;
         color: var(--tx3);
         font-family: "JetBrains Mono", monospace;
@@ -176,14 +180,15 @@
 
       /* ─── CLOCK ─── */
       .clock {
-        margin: 0 16px 14px;
+        margin: 0 16px 12px;
         background: var(--s1);
         border: 1px solid var(--bd);
         border-radius: var(--r);
-        padding: 14px 18px;
+        padding: 13px 16px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        box-shadow: var(--shadow-sm);
         position: relative;
         overflow: hidden;
       }
@@ -193,9 +198,8 @@
         top: 0;
         left: 0;
         right: 0;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--a1), transparent);
-        opacity: 0.4;
+        height: 2.5px;
+        background: linear-gradient(90deg, var(--a1), var(--a2));
       }
       .cdate {
         font-size: 12px;
@@ -209,19 +213,19 @@
       }
       .ctime {
         font-family: "JetBrains Mono", monospace;
-        font-size: 24px;
-        font-weight: 600;
+        font-size: 22px;
+        font-weight: 700;
         color: var(--a1);
         letter-spacing: 2px;
       }
 
-      /* ─── COUNT BANNER ─── */
+      /* ─── COUNT BAR ─── */
       .count-bar {
-        margin: 0 16px 14px;
-        background: rgba(59, 130, 246, 0.07);
-        border: 1px solid rgba(59, 130, 246, 0.18);
-        border-radius: 14px;
-        padding: 11px 16px;
+        margin: 0 16px 12px;
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        border-radius: 12px;
+        padding: 10px 14px;
         display: none;
         align-items: center;
         justify-content: space-between;
@@ -229,28 +233,32 @@
       .count-lbl {
         font-size: 12px;
         color: var(--tx2);
+        display: flex;
+        align-items: center;
+        gap: 5px;
       }
       .count-n {
         font-family: "JetBrains Mono", monospace;
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 700;
-        color: var(--a1h);
+        color: var(--a1);
       }
 
       /* ─── CARD ─── */
       .card {
-        margin: 0 16px 12px;
+        margin: 0 16px 10px;
         background: var(--s1);
         border: 1.5px solid var(--bd);
         border-radius: var(--r);
         overflow: hidden;
+        box-shadow: var(--shadow-sm);
         transition:
-          border-color 0.25s,
-          box-shadow 0.25s;
+          border-color 0.22s,
+          box-shadow 0.22s;
       }
       .card.error {
-        border-color: rgba(239, 68, 68, 0.5) !important;
-        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08) !important;
+        border-color: rgba(220, 38, 38, 0.5) !important;
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.08) !important;
       }
       .card.shake {
         animation: shake 0.4s ease;
@@ -274,55 +282,65 @@
         }
       }
       .ch {
-        padding: 13px 18px 10px;
+        padding: 11px 15px 10px;
         display: flex;
         align-items: center;
         gap: 10px;
         border-bottom: 1px solid var(--bd);
+        background: #fafbfd;
       }
       .ci {
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
         border-radius: 9px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 15px;
+        font-size: 16px;
         flex-shrink: 0;
       }
       .ci-b {
-        background: rgba(59, 130, 246, 0.12);
+        background: #dbeafe;
+        color: var(--a1);
       }
       .ci-p {
-        background: rgba(139, 92, 246, 0.12);
+        background: #ede9fe;
+        color: var(--a2);
       }
       .ci-g {
-        background: rgba(16, 185, 129, 0.12);
+        background: #d1fae5;
+        color: var(--a3);
       }
       .ci-a {
-        background: rgba(245, 158, 11, 0.12);
+        background: #fef3c7;
+        color: var(--a4);
       }
       .ci-k {
-        background: rgba(236, 72, 153, 0.12);
+        background: #fce7f3;
+        color: #be185d;
+      }
+      .ci-ig {
+        background: #fce7f3;
+        color: #be185d;
       }
       .ct {
         font-size: 11px;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 1.2px;
-        color: var(--tx3);
+        color: var(--tx2);
       }
       .cb {
-        padding: 14px 18px;
+        padding: 14px 15px;
       }
 
       /* ─── INPUT ─── */
       .inp {
         width: 100%;
-        background: rgba(255, 255, 255, 0.04);
+        background: #f8fafc;
         border: 1.5px solid var(--bd2);
-        border-radius: 12px;
-        padding: 13px 16px;
+        border-radius: 10px;
+        padding: 12px 13px;
         font-family: "Plus Jakarta Sans", sans-serif;
         font-size: 15px;
         color: var(--tx);
@@ -331,12 +349,77 @@
         -webkit-appearance: none;
       }
       .inp::placeholder {
-        color: var(--tx3);
+        color: var(--tx4);
       }
       .inp:focus {
         border-color: var(--a1);
-        background: rgba(59, 130, 246, 0.05);
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+      }
+
+      /* ─── INPUT GROUP (IG) ─── */
+      .inp-group {
+        display: flex;
+        align-items: center;
+        background: #f8fafc;
+        border: 1.5px solid var(--bd2);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: all 0.2s;
+      }
+      .inp-group:focus-within {
+        border-color: var(--a1);
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+      }
+      .inp-prefix {
+        padding: 12px 4px 12px 13px;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--tx3);
+        flex-shrink: 0;
+        font-family: "JetBrains Mono", monospace;
+      }
+      .inp-group input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        outline: none;
+        padding: 12px 13px 12px 2px;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 15px;
+        color: var(--tx);
+        -webkit-appearance: none;
+        width: 100%;
+      }
+      .inp-group input::placeholder {
+        color: var(--tx4);
+      }
+
+      /* IG Second Input */
+      .ig-second {
+        margin-top: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition:
+          max-height 0.38s ease,
+          opacity 0.3s ease,
+          margin-top 0.3s;
+      }
+      .ig-second.visible {
+        max-height: 90px;
+        opacity: 1;
+        margin-top: 8px;
+      }
+      .ig-label {
+        font-size: 11px;
+        color: var(--tx3);
+        font-weight: 600;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
       }
 
       /* ─── CHIPS ─── */
@@ -365,48 +448,88 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 4px;
+        gap: 5px;
         padding: 10px 6px;
-        border-radius: 12px;
+        border-radius: 10px;
         border: 1.5px solid var(--bd2);
-        background: rgba(255, 255, 255, 0.02);
+        background: #f8fafc;
         font-size: 12px;
         font-weight: 600;
         color: var(--tx3);
         transition: all 0.2s;
         cursor: pointer;
         text-align: center;
-        min-height: 58px;
+        min-height: 64px;
         line-height: 1.3;
       }
-      .clbl .em {
-        font-size: 18px;
+      .clbl .bi {
+        font-size: 20px;
       }
       .chip-blok input:checked + .clbl {
-        background: rgba(139, 92, 246, 0.12);
+        background: #ede9fe;
         border-color: var(--a2);
         color: var(--a2);
-        box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+        box-shadow: 0 2px 10px rgba(124, 58, 237, 0.14);
       }
       .chip-bidang input:checked + .clbl {
-        background: rgba(59, 130, 246, 0.12);
+        background: #dbeafe;
         border-color: var(--a1);
-        color: var(--a1h);
-        box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+        color: var(--a1);
+        box-shadow: 0 2px 10px rgba(37, 99, 235, 0.14);
       }
       .chip-makan input:checked + .clbl {
-        background: rgba(16, 185, 129, 0.12);
+        background: #d1fae5;
         border-color: var(--a3);
         color: var(--a3);
-        box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+        box-shadow: 0 2px 10px rgba(5, 150, 105, 0.14);
+      }
+
+      /* ─── KONSUMSI NOTE ─── */
+      .konsumsi-note {
+        margin-top: 10px;
+        border-top: 1px solid var(--bd);
+        padding-top: 10px;
+      }
+      .konsumsi-note label {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--tx3);
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .inp-note {
+        width: 100%;
+        background: #f8fafc;
+        border: 1.5px solid var(--bd2);
+        border-radius: 10px;
+        padding: 9px 12px;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 13px;
+        color: var(--tx);
+        outline: none;
+        resize: none;
+        transition: all 0.2s;
+        min-height: 64px;
+        -webkit-appearance: none;
+      }
+      .inp-note::placeholder {
+        color: var(--tx4);
+        font-size: 12px;
+      }
+      .inp-note:focus {
+        border-color: var(--a1);
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
       }
 
       /* ─── CAMERA ─── */
       .cam-ph {
         width: 100%;
-        height: 240px;
+        height: 230px;
         border: 2px dashed var(--bd2);
-        border-radius: 14px;
+        border-radius: 12px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -414,17 +537,18 @@
         gap: 10px;
         cursor: pointer;
         transition: all 0.25s;
-        background: rgba(255, 255, 255, 0.01);
+        background: #f8fafc;
       }
       .cam-ph:hover {
         border-color: var(--a1);
-        background: rgba(59, 130, 246, 0.03);
+        background: #eff6ff;
       }
       .cam-ph:active {
         transform: scale(0.98);
       }
-      .cam-ph .big {
-        font-size: 44px;
+      .cam-ico {
+        font-size: 40px;
+        color: var(--tx3);
       }
       .cam-ph p {
         font-size: 13px;
@@ -434,11 +558,11 @@
       }
       .cam-ph span {
         font-size: 11px;
-        opacity: 0.6;
+        color: var(--tx4);
       }
       .cam-live {
         position: relative;
-        border-radius: 14px;
+        border-radius: 12px;
         overflow: hidden;
         background: #000;
         aspect-ratio: 3/4;
@@ -455,13 +579,12 @@
       #vid.rear {
         transform: scaleX(1);
       }
-      /* flip camera button */
       .btn-flip {
-        width: 42px;
-        height: 42px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.12);
-        border: 1.5px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.2);
+        border: 1.5px solid rgba(255, 255, 255, 0.3);
         color: #fff;
         font-size: 18px;
         display: flex;
@@ -472,23 +595,22 @@
         flex-shrink: 0;
       }
       .btn-flip:hover {
-        background: rgba(255, 255, 255, 0.22);
+        background: rgba(255, 255, 255, 0.3);
       }
       .btn-flip:active {
         transform: scale(0.88) rotate(180deg);
       }
-      /* cam indicator badge */
       .cam-badge {
         position: absolute;
         top: 10px;
         left: 10px;
-        background: rgba(0, 0, 0, 0.55);
-        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 20px;
         padding: 3px 10px;
         font-size: 10px;
         font-weight: 700;
-        color: rgba(255, 255, 255, 0.75);
+        color: rgba(255, 255, 255, 0.9);
         font-family: "JetBrains Mono", monospace;
         letter-spacing: 0.5px;
         pointer-events: none;
@@ -505,7 +627,7 @@
         position: absolute;
         width: 22px;
         height: 22px;
-        border-color: rgba(59, 130, 246, 0.8);
+        border-color: rgba(255, 255, 255, 0.7);
         border-style: solid;
       }
       .cam-frame::before {
@@ -525,7 +647,7 @@
       }
       #preview {
         width: 100%;
-        border-radius: 14px;
+        border-radius: 12px;
         display: none;
         max-height: 460px;
         object-fit: cover;
@@ -537,15 +659,18 @@
         margin-top: 10px;
       }
       .shutter {
-        width: 58px;
-        height: 58px;
+        width: 56px;
+        height: 56px;
         border-radius: 50%;
-        background: white;
-        border: 4px solid rgba(255, 255, 255, 0.25);
+        background: var(--a1);
+        border: 4px solid rgba(37, 99, 235, 0.25);
         flex-shrink: 0;
         cursor: pointer;
-        transition: transform 0.15s;
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
         position: relative;
+        box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
       }
       .shutter:active {
         transform: scale(0.88);
@@ -556,6 +681,7 @@
         inset: 5px;
         border-radius: 50%;
         background: white;
+        opacity: 0.92;
       }
 
       /* ─── BUTTONS ─── */
@@ -563,42 +689,43 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 7px;
+        gap: 6px;
         border: none;
-        border-radius: 11px;
+        border-radius: 10px;
         font-family: "Plus Jakarta Sans", sans-serif;
         font-weight: 600;
         cursor: pointer;
         transition: all 0.2s;
         outline: none;
-        padding: 10px 14px;
+        padding: 10px 12px;
         font-size: 12px;
         flex: 1;
       }
       .btn-ghost {
-        background: rgba(255, 255, 255, 0.06);
+        background: #f1f5f9;
         color: var(--tx2);
         border: 1px solid var(--bd2);
       }
       .btn-ghost:hover {
-        background: rgba(255, 255, 255, 0.1);
+        background: #e2e8f0;
       }
       .btn-red {
-        background: rgba(239, 68, 68, 0.1);
+        background: #fef2f2;
         color: var(--red);
-        border: 1px solid rgba(239, 68, 68, 0.2);
+        border: 1px solid #fecaca;
       }
       .btn-red:hover {
-        background: rgba(239, 68, 68, 0.18);
+        background: #fee2e2;
       }
 
+      /* ─── SUBMIT ─── */
       .sub-wrap {
-        margin: 4px 16px 0;
+        margin: 6px 16px 0;
       }
       .bsub {
         width: 100%;
-        padding: 17px;
-        border-radius: 16px;
+        padding: 16px;
+        border-radius: 14px;
         background: linear-gradient(135deg, var(--a1) 0%, var(--a2) 100%);
         color: #fff;
         font-family: "Plus Jakarta Sans", sans-serif;
@@ -610,6 +737,7 @@
         transition: all 0.3s;
         position: relative;
         overflow: hidden;
+        box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
       }
       .bsub::before {
         content: "";
@@ -617,13 +745,13 @@
         inset: 0;
         background: linear-gradient(
           135deg,
-          rgba(255, 255, 255, 0.15) 0%,
+          rgba(255, 255, 255, 0.18) 0%,
           transparent 60%
         );
       }
       .bsub:hover:not(:disabled) {
         transform: translateY(-2px);
-        box-shadow: 0 14px 36px rgba(59, 130, 246, 0.35);
+        box-shadow: 0 8px 28px rgba(37, 99, 235, 0.38);
       }
       .bsub:active:not(:disabled) {
         transform: translateY(0);
@@ -638,12 +766,11 @@
         justify-content: center;
         gap: 8px;
       }
-
       .spin {
         width: 18px;
         height: 18px;
         border-radius: 50%;
-        border: 2.5px solid rgba(255, 255, 255, 0.2);
+        border: 2.5px solid rgba(255, 255, 255, 0.25);
         border-top-color: #fff;
         animation: ro 0.7s linear infinite;
       }
@@ -653,67 +780,93 @@
         }
       }
 
+      /* ─── IG PREVIEW (under submit) ─── */
+      .ig-preview-wrap {
+        margin: 6px 16px 0;
+        display: none;
+      }
+      .ig-preview-wrap.show {
+        display: block;
+      }
+      .ig-preview {
+        background: linear-gradient(135deg, #fdf2f8, #f5f3ff);
+        border: 1px solid #f9a8d4;
+        border-radius: 10px;
+        padding: 8px 13px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        color: #9d174d;
+      }
+      .ig-preview .bi {
+        font-size: 14px;
+      }
+
       /* ─── TOAST ─── */
       .toast {
         position: fixed;
-        bottom: 28px;
+        bottom: 24px;
         left: 50%;
         transform: translateX(-50%) translateY(110px);
-        background: var(--s2);
-        border: 1px solid var(--bd2);
-        border-radius: 14px;
-        padding: 13px 18px;
+        background: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 12px;
+        padding: 12px 18px;
         display: flex;
         align-items: center;
         gap: 10px;
         font-size: 13px;
         font-weight: 500;
+        color: #f1f5f9;
         min-width: 260px;
         max-width: 350px;
         z-index: 999;
         pointer-events: none;
         transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
       }
       .toast.show {
         transform: translateX(-50%) translateY(0);
       }
       .toast.ok {
-        border-color: rgba(16, 185, 129, 0.4);
+        border-color: rgba(5, 150, 105, 0.5);
       }
       .toast.err {
-        border-color: rgba(239, 68, 68, 0.4);
+        border-color: rgba(220, 38, 38, 0.5);
       }
       .toast.wait {
-        border-color: rgba(59, 130, 246, 0.4);
+        border-color: rgba(37, 99, 235, 0.5);
       }
 
-      /* ─── SUCCESS ─── */
+      /* ─── SUCCESS SCREEN ─── */
       .sscreen {
         display: none;
         position: fixed;
         inset: 0;
         z-index: 200;
-        background: rgba(6, 11, 20, 0.97);
+        background: rgba(240, 244, 249, 0.97);
+        backdrop-filter: blur(8px);
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 18px;
+        gap: 16px;
         padding: 40px;
       }
       .sscreen.show {
         display: flex;
       }
       .sring {
-        width: 90px;
-        height: 90px;
+        width: 88px;
+        height: 88px;
         border-radius: 50%;
         border: 2px solid var(--a3);
-        background: rgba(16, 185, 129, 0.1);
+        background: #d1fae5;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 40px;
+        font-size: 42px;
         animation: pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
       @keyframes pop {
@@ -733,9 +886,9 @@
       }
       .smeta {
         font-size: 13px;
-        color: var(--tx3);
+        color: var(--tx2);
         text-align: center;
-        line-height: 1.8;
+        line-height: 1.9;
       }
       .sdiv {
         width: 48px;
@@ -758,14 +911,18 @@
 
       <!-- HEADER -->
       <div class="header">
-        <div class="hlogo">📋</div>
-        <h1>Absensi<br />Kehadiran</h1>
+        <div class="hlogo">
+          <i
+            class="bi bi-clipboard2-check-fill"
+            style="font-size: 26px; color: #fff"
+          ></i>
+        </div>
+        <h1>Absensi <span>Kehadiran</span></h1>
         <div class="hsub" id="dateDisplay">memuat tanggal...</div>
       </div>
 
-      <!-- Hiden -->
+      <!-- HIDDEN AUTO-INFO -->
       <div id="utama">
-        <!-- CLOCK -->
         <div class="clock">
           <div>
             <div class="cdate" id="cDate">—</div>
@@ -774,24 +931,24 @@
           <div class="ctime" id="cTime">00:00:00</div>
         </div>
 
-        <!-- RECORD COUNT -->
         <div class="count-bar" id="countBar">
-          <span class="count-lbl">Total absensi tersimpan</span>
+          <span class="count-lbl"
+            ><i class="bi bi-people-fill"></i> Total absensi tersimpan</span
+          >
           <span class="count-n" id="countN">0</span>
         </div>
 
-        <!-- AUTO INFO CARD -->
         <div
           class="card"
           id="cAutoInfo"
-          style="
-            border-color: rgba(16, 185, 129, 0.3);
-            background: rgba(16, 185, 129, 0.04);
-          "
+          style="border-color: #a7f3d0; background: #f0fdf4"
         >
-          <div class="ch" style="border-bottom-color: rgba(16, 185, 129, 0.15)">
-            <div class="ci" style="background: rgba(16, 185, 129, 0.12)">
-              ⚡
+          <div
+            class="ch"
+            style="background: #f0fdf4; border-bottom-color: #bbf7d0"
+          >
+            <div class="ci" style="background: #d1fae5; color: #059669">
+              <i class="bi bi-lightning-charge-fill"></i>
             </div>
             <span class="ct" style="color: var(--a3)">Terisi Otomatis</span>
           </div>
@@ -800,10 +957,10 @@
               <div
                 style="
                   flex: 1;
-                  background: rgba(16, 185, 129, 0.07);
-                  border: 1px solid rgba(16, 185, 129, 0.18);
-                  border-radius: 12px;
-                  padding: 11px 14px;
+                  background: #ecfdf5;
+                  border: 1px solid #a7f3d0;
+                  border-radius: 10px;
+                  padding: 10px 12px;
                 "
               >
                 <div
@@ -814,18 +971,21 @@
                     letter-spacing: 1px;
                     text-transform: uppercase;
                     margin-bottom: 4px;
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
                   "
                 >
-                  📅 Tanggal
+                  <i class="bi bi-calendar3"></i> Tanggal
                 </div>
                 <div
+                  id="autoTanggal"
                   style="
                     font-size: 13px;
-                    font-weight: 600;
+                    font-weight: 700;
                     color: var(--a3);
                     font-family: &quot;JetBrains Mono&quot;, monospace;
                   "
-                  id="autoTanggal"
                 >
                   —
                 </div>
@@ -833,10 +993,10 @@
               <div
                 style="
                   flex: 1;
-                  background: rgba(16, 185, 129, 0.07);
-                  border: 1px solid rgba(16, 185, 129, 0.18);
-                  border-radius: 12px;
-                  padding: 11px 14px;
+                  background: #ecfdf5;
+                  border: 1px solid #a7f3d0;
+                  border-radius: 10px;
+                  padding: 10px 12px;
                 "
               >
                 <div
@@ -847,18 +1007,21 @@
                     letter-spacing: 1px;
                     text-transform: uppercase;
                     margin-bottom: 4px;
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
                   "
                 >
-                  ⏰ Jam Datang
+                  <i class="bi bi-clock-fill"></i> Jam Datang
                 </div>
                 <div
+                  id="autoJam"
                   style="
                     font-size: 13px;
-                    font-weight: 600;
+                    font-weight: 700;
                     color: var(--a3);
                     font-family: &quot;JetBrains Mono&quot;, monospace;
                   "
-                  id="autoJam"
                 >
                   —
                 </div>
@@ -882,7 +1045,7 @@
       <!-- NAMA -->
       <div class="card" id="cNama">
         <div class="ch">
-          <div class="ci ci-b">👤</div>
+          <div class="ci ci-b"><i class="bi bi-person-fill"></i></div>
           <span class="ct">Nama Lengkap</span>
         </div>
         <div class="cb">
@@ -896,38 +1059,78 @@
         </div>
       </div>
 
+      <!-- INSTAGRAM -->
+      <div class="card" id="cIG">
+        <div class="ch">
+          <div class="ci ci-ig"><i class="bi bi-instagram"></i></div>
+          <span class="ct">Akun Instagram</span>
+        </div>
+        <div class="cb">
+          <div class="inp-group">
+            <span class="inp-prefix">@</span>
+            <input
+              id="iIG1"
+              type="text"
+              placeholder="username_ig_kamu"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="off"
+              oninput="onIG1Input()"
+            />
+          </div>
+          <div class="ig-second" id="igSecond">
+            <div class="ig-label">
+              <i class="bi bi-plus-circle-fill"></i> Akun Instagram ke-2
+              (opsional)
+            </div>
+            <div class="inp-group">
+              <span class="inp-prefix">@</span>
+              <input
+                id="iIG2"
+                type="text"
+                placeholder="username_ig_kedua"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+                oninput="updateIGPreview()"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- BLOK -->
       <div class="card" id="cBlok">
         <div class="ch">
-          <div class="ci ci-p">🏢</div>
+          <div class="ci ci-p"><i class="bi bi-building-fill"></i></div>
           <span class="ct">Pilih Blok</span>
         </div>
         <div class="cb">
           <div class="chips chips-4">
-            <label class="chip chip-blok"
-              ><input type="radio" name="blok" value="Blok 1" /><span
-                class="clbl"
-                ><span class="em">1️⃣</span>Blok 1</span
-              ></label
-            >
-            <label class="chip chip-blok"
-              ><input type="radio" name="blok" value="Blok 2" /><span
-                class="clbl"
-                ><span class="em">2️⃣</span>Blok 2</span
-              ></label
-            >
-            <label class="chip chip-blok"
-              ><input type="radio" name="blok" value="Blok 3" /><span
-                class="clbl"
-                ><span class="em">3️⃣</span>Blok 3</span
-              ></label
-            >
-            <label class="chip chip-blok"
-              ><input type="radio" name="blok" value="Blok 4" /><span
-                class="clbl"
-                ><span class="em">4️⃣</span>Blok 4</span
-              ></label
-            >
+            <label class="chip chip-blok">
+              <input type="radio" name="blok" value="Blok 1" />
+              <span class="clbl"
+                ><i class="bi bi-1-circle-fill"></i>Blok 1</span
+              >
+            </label>
+            <label class="chip chip-blok">
+              <input type="radio" name="blok" value="Blok 2" />
+              <span class="clbl"
+                ><i class="bi bi-2-circle-fill"></i>Blok 2</span
+              >
+            </label>
+            <label class="chip chip-blok">
+              <input type="radio" name="blok" value="Blok 3" />
+              <span class="clbl"
+                ><i class="bi bi-3-circle-fill"></i>Blok 3</span
+              >
+            </label>
+            <label class="chip chip-blok">
+              <input type="radio" name="blok" value="Blok 4" />
+              <span class="clbl"
+                ><i class="bi bi-4-circle-fill"></i>Blok 4</span
+              >
+            </label>
           </div>
         </div>
       </div>
@@ -935,59 +1138,64 @@
       <!-- BIDANG -->
       <div class="card" id="cBidang">
         <div class="ch">
-          <div class="ci ci-b">🎯</div>
+          <div class="ci ci-b"><i class="bi bi-bullseye"></i></div>
           <span class="ct">Fokus Bidang</span>
         </div>
         <div class="cb">
           <div class="chips chips-2">
-            <label class="chip chip-bidang"
-              ><input type="radio" name="bidang" value="OBS" /><span
-                class="clbl"
-                ><span class="em">🎥</span>OBS</span
-              ></label
-            >
-            <label class="chip chip-bidang"
-              ><input type="radio" name="bidang" value="Kamera" /><span
-                class="clbl"
-                ><span class="em">📷</span>Kamera</span
-              ></label
-            >
-            <label class="chip chip-bidang"
-              ><input type="radio" name="bidang" value="Sound" /><span
-                class="clbl"
-                ><span class="em">🎵</span>Sound</span
-              ></label
-            >
-            <label class="chip chip-bidang"
-              ><input type="radio" name="bidang" value="PPT Live" /><span
-                class="clbl"
-                ><span class="em">📊</span>PPT Live</span
-              ></label
-            >
+            <label class="chip chip-bidang">
+              <input type="radio" name="bidang" value="OBS" />
+              <span class="clbl"><i class="bi bi-display-fill"></i>OBS</span>
+            </label>
+            <label class="chip chip-bidang">
+              <input type="radio" name="bidang" value="Kamera" />
+              <span class="clbl"
+                ><i class="bi bi-camera-video-fill"></i>Kamera</span
+              >
+            </label>
+            <label class="chip chip-bidang">
+              <input type="radio" name="bidang" value="Sound" />
+              <span class="clbl"
+                ><i class="bi bi-volume-up-fill"></i>Sound</span
+              >
+            </label>
+            <label class="chip chip-bidang">
+              <input type="radio" name="bidang" value="PPT Live" />
+              <span class="clbl"
+                ><i class="bi bi-easel2-fill"></i>PPT Live</span
+              >
+            </label>
           </div>
         </div>
       </div>
 
-      <!-- MAKAN -->
+      <!-- KONSUMSI -->
       <div class="card" id="cMakan">
         <div class="ch">
-          <div class="ci ci-g">🍜</div>
+          <div class="ci ci-g"><i class="bi bi-cup-hot-fill"></i></div>
           <span class="ct">Konsumsi</span>
         </div>
         <div class="cb">
           <div class="chips chips-2">
-            <label class="chip chip-makan"
-              ><input type="radio" name="makan" value="Bakso" /><span
-                class="clbl"
-                ><span class="em">🍲</span>Bakso</span
-              ></label
-            >
-            <label class="chip chip-makan"
-              ><input type="radio" name="makan" value="Mie Ayam" /><span
-                class="clbl"
-                ><span class="em">🍜</span>Mie Ayam</span
-              ></label
-            >
+            <label class="chip chip-makan">
+              <input type="radio" name="makan" value="Bakso" />
+              <span class="clbl">🍲Bakso</span>
+            </label>
+            <label class="chip chip-makan">
+              <input type="radio" name="makan" value="Mie Ayam" />
+              <span class="clbl">🍜Mie Ayam</span>
+            </label>
+          </div>
+          <div class="konsumsi-note">
+            <label for="iKonsumsiNote">
+              <i class="bi bi-pencil-square"></i> Keterangan tambahan / alergi
+              makanan (opsional)
+            </label>
+            <textarea
+              class="inp-note"
+              id="iKonsumsiNote"
+              placeholder="Contoh: tidak makan daging sapi, minta sambal, tidak suka pedas, alergi kacang, dll..."
+            ></textarea>
           </div>
         </div>
       </div>
@@ -995,12 +1203,12 @@
       <!-- FOTO -->
       <div class="card" id="cFoto">
         <div class="ch">
-          <div class="ci ci-k">📸</div>
+          <div class="ci ci-k"><i class="bi bi-camera-fill"></i></div>
           <span class="ct">Foto Selfie</span>
         </div>
         <div class="cb">
           <div class="cam-ph" id="camPh" onclick="startCam()">
-            <div class="big">📷</div>
+            <i class="bi bi-camera cam-ico"></i>
             <p>
               Tap untuk buka kamera<br /><span
                 >Izinkan akses kamera saat diminta</span
@@ -1010,7 +1218,7 @@
           <div class="cam-live" id="camLive">
             <video id="vid" autoplay playsinline muted></video>
             <div class="cam-frame"></div>
-            <div class="cam-badge" id="camBadge">📷 DEPAN</div>
+            <div class="cam-badge" id="camBadge">DEPAN</div>
           </div>
           <canvas id="canvas"></canvas>
           <img id="preview" alt="Foto selfie" />
@@ -1021,7 +1229,7 @@
               onclick="retake()"
               style="display: none"
             >
-              🔄 Ulang
+              <i class="bi bi-arrow-counterclockwise"></i> Ulang
             </button>
             <button
               class="btn-flip"
@@ -1029,13 +1237,23 @@
               onclick="flipCam()"
               title="Ganti kamera"
             >
-              🔄
+              <i class="bi bi-arrow-repeat"></i>
             </button>
             <div style="flex: 1; display: flex; justify-content: center">
               <button class="shutter" id="btnSnap" onclick="snap()"></button>
             </div>
-            <button class="btn btn-ghost" onclick="closeCam()">✕ Tutup</button>
+            <button class="btn btn-ghost" onclick="closeCam()">
+              <i class="bi bi-x-lg"></i> Tutup
+            </button>
           </div>
+        </div>
+      </div>
+
+      <!-- IG PREVIEW (bawah tombol kirim) -->
+      <div class="ig-preview-wrap" id="igPreviewWrap">
+        <div class="ig-preview">
+          <i class="bi bi-instagram"></i>
+          <span id="igPreviewText"></span>
         </div>
       </div>
 
@@ -1043,16 +1261,92 @@
       <div class="sub-wrap">
         <button class="bsub" id="btnSub" onclick="doSubmit()">
           <div class="brow">
-            <span style="font-size: 18px">✅</span><span>Kirim Absensi</span>
+            <i class="bi bi-send-check-fill" style="font-size: 17px"></i>
+            <span>Kirim Absensi</span>
           </div>
         </button>
+      </div>
+
+      <!-- VIEW ABSEN IG BUTTON -->
+      <div class="sub-wrap" style="margin-top: 10px">
+        <button
+          class="bsub"
+          id="btnViewIG"
+          onclick="toggleIGPanel()"
+          style="
+            background: linear-gradient(135deg, #be185d 0%, #7c3aed 100%);
+            box-shadow: 0 4px 20px rgba(190, 24, 93, 0.28);
+          "
+        >
+          <div class="brow" id="btnViewIGRow">
+            <i class="bi bi-instagram" style="font-size: 17px"></i>
+            <span>View Absen IG</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- IG ATTENDEE PANEL -->
+      <div id="igPanel" style="display: none; margin: 10px 16px 0">
+        <div class="card" style="border-color: #f9a8d4">
+          <div
+            class="ch"
+            style="
+              background: linear-gradient(135deg, #fdf2f8, #f5f3ff);
+              border-bottom-color: #f9a8d4;
+            "
+          >
+            <div class="ci" style="background: #fce7f3; color: #be185d">
+              <i class="bi bi-instagram"></i>
+            </div>
+            <span class="ct" style="color: #be185d">Yang Sudah Absen</span>
+            <div
+              id="igPanelCount"
+              style="
+                margin-left: auto;
+                background: #fce7f3;
+                color: #be185d;
+                border-radius: 20px;
+                padding: 2px 10px;
+                font-size: 11px;
+                font-weight: 700;
+                font-family: &quot;JetBrains Mono&quot;, monospace;
+              "
+            >
+              0
+            </div>
+          </div>
+          <div class="cb" id="igPanelBody">
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 16px 0;
+                color: var(--tx4);
+                font-size: 13px;
+                gap: 8px;
+              "
+            >
+              <div
+                class="spin"
+                style="
+                  border-top-color: #be185d;
+                  border-color: rgba(190, 24, 93, 0.2);
+                "
+              ></div>
+              Memuat data...
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- /app -->
 
-    <!-- SUCCESS -->
+    <!-- SUCCESS SCREEN -->
     <div class="sscreen" id="ss">
-      <div class="sring">✅</div>
+      <div class="sring">
+        <i class="bi bi-check-lg" style="color: var(--a3)"></i>
+      </div>
       <div class="stitle">Absensi Berhasil!</div>
       <div class="sdiv"></div>
       <div class="smeta" id="sMeta"></div>
@@ -1061,7 +1355,9 @@
         style="max-width: 210px; margin-top: 8px"
         onclick="doReset()"
       >
-        <div class="brow">🔄 <span>Absen Lagi</span></div>
+        <div class="brow">
+          <i class="bi bi-arrow-repeat"></i> <span>Absen Lagi</span>
+        </div>
       </button>
     </div>
 
@@ -1071,17 +1367,9 @@
     </div>
 
     <script>
-      /* ════════════════════════════════════════════════
-   SHEETY CONFIG
-   Header kolom Google Sheet (baris 1):
-   Tanggal | Nama | Blok | Fokus Bidang | Konsumsi | Jam Datang | Foto
-   
-   Sheety otomatis konversi header → camelCase:
-   tanggal | nama | blok | fokusBidang | konsumsi | jamDatang | foto
-════════════════════════════════════════════════ */
+      /* ════════ SHEETY CONFIG ════════ */
       const SHEETY_URL =
         "https://api.sheety.co/4cbe9b40b89ccaf5f33292605305b399/absensiLatihanKomindok/absen";
-
       const SHEETY_BEARER = "";
       const SHEETY_BASIC = "";
 
@@ -1093,29 +1381,14 @@
         return h;
       }
 
-      /* ════════════════════════════════════════════════
-   IMGBB CONFIG
-   Foto selfie diupload ke ImgBB → URL langsung
-   disimpan di kolom "foto" Google Sheet.
-   Nama gambar = nama peserta absensi.
-════════════════════════════════════════════════ */
+      /* ════════ IMGBB CONFIG ════════ */
       const IMGBB_KEY = "93398b7b07c1644861b17b0f136199ca";
-
-      /**
-       * Upload base64 image ke ImgBB.
-       * @param {string} base64  – data URL atau pure base64
-       * @param {string} name    – nama file (tanpa ekstensi)
-       * @returns {Promise<{url, display_url, delete_url}>}
-       */
       async function uploadToImgBB(base64, name) {
-        // Hapus prefix "data:image/...;base64," jika ada
         const pureB64 = base64.replace(/^data:image\/\w+;base64,/, "");
-
         const form = new FormData();
         form.append("key", IMGBB_KEY);
         form.append("image", pureB64);
-        form.append("name", name); // nama file = nama peserta
-
+        form.append("name", name);
         const res = await fetch("https://api.imgbb.com/1/upload", {
           method: "POST",
           body: form,
@@ -1124,15 +1397,13 @@
         if (!json.success)
           throw new Error(json.error?.message || "ImgBB upload gagal");
         return {
-          url: json.data.url, // URL direct image
-          display_url: json.data.display_url, // URL halaman viewer
+          url: json.data.url,
+          display_url: json.data.display_url,
           delete_url: json.data.delete_url,
         };
       }
 
-      /* ════════════════════════════════════════════════
-   CLOCK
-════════════════════════════════════════════════ */
+      /* ════════ CLOCK ════════ */
       const DAYS = [
         "Minggu",
         "Senin",
@@ -1181,7 +1452,6 @@
         document.getElementById("cDay").textContent = DAYS[n.getDay()];
         document.getElementById("dateDisplay").textContent =
           `${DAYS[n.getDay()]}, ${n.getDate()} ${MON[n.getMonth()]} ${n.getFullYear()}`;
-        // Update auto-info card
         document.getElementById("autoTanggal").textContent =
           `${pad(n.getDate())}/${pad(n.getMonth() + 1)}/${n.getFullYear()}`;
         document.getElementById("autoJam").textContent =
@@ -1190,33 +1460,55 @@
       tick();
       setInterval(tick, 1000);
 
-      /* ════════════════════════════════════════════════
-   LOAD COUNT  (GET)
-════════════════════════════════════════════════ */
+      /* ════════ LOAD COUNT ════════ */
       async function loadCount() {
         try {
           const r = await fetch(SHEETY_URL, { headers: sheetyHeaders() });
           if (!r.ok) return;
           const d = await r.json();
-          const rows = d.absen || [];
-          document.getElementById("countN").textContent = rows.length;
+          document.getElementById("countN").textContent = (
+            d.absen || []
+          ).length;
           document.getElementById("countBar").style.display = "flex";
         } catch (e) {
-          /* silent — tidak mempengaruhi pengiriman */
+          /* silent */
         }
       }
       loadCount();
 
-      /* ════════════════════════════════════════════════
-   CAMERA
-════════════════════════════════════════════════ */
+      /* ════════ INSTAGRAM CHAINED INPUT ════════ */
+      function onIG1Input() {
+        const val = document.getElementById("iIG1").value.trim();
+        const second = document.getElementById("igSecond");
+        if (val.length > 0) {
+          second.classList.add("visible");
+        } else {
+          second.classList.remove("visible");
+          document.getElementById("iIG2").value = "";
+        }
+        updateIGPreview();
+      }
+
+      function updateIGPreview() {
+        const ig1 = document.getElementById("iIG1").value.trim();
+        const ig2 = document.getElementById("iIG2").value.trim();
+        const wrap = document.getElementById("igPreviewWrap");
+        const txt = document.getElementById("igPreviewText");
+        if (ig1) {
+          txt.textContent = ig2 ? `@${ig1}  ·  @${ig2}` : `@${ig1}`;
+          wrap.classList.add("show");
+        } else {
+          wrap.classList.remove("show");
+        }
+      }
+
+      /* ════════ CAMERA ════════ */
       let stream = null,
         photoB64 = null,
-        facingMode = "user"; // "user" = depan, "environment" = belakang
+        facingMode = "user";
 
       async function startCam(facing) {
         if (facing) facingMode = facing;
-        // Hentikan stream lama jika ada
         killStream();
         try {
           stream = await navigator.mediaDevices.getUserMedia({
@@ -1229,17 +1521,9 @@
           });
           const vid = document.getElementById("vid");
           vid.srcObject = stream;
-          // Mirror hanya untuk kamera depan
-          if (facingMode === "environment") {
-            vid.classList.add("rear");
-          } else {
-            vid.classList.remove("rear");
-          }
-          // Update badge
-          const badge = document.getElementById("camBadge");
-          badge.textContent =
-            facingMode === "environment" ? "🔙 BELAKANG" : "📷 DEPAN";
-
+          vid.classList.toggle("rear", facingMode === "environment");
+          document.getElementById("camBadge").textContent =
+            facingMode === "environment" ? "BELAKANG" : "DEPAN";
           document.getElementById("camPh").style.display = "none";
           document.getElementById("camLive").style.display = "block";
           document.getElementById("preview").style.display = "none";
@@ -1248,7 +1532,7 @@
           document.getElementById("btnRetake").style.display = "none";
           document.getElementById("btnFlip").style.display = "flex";
         } catch (e) {
-          showToast("❌ Kamera tidak bisa diakses: " + e.message, "err");
+          showToast("Kamera tidak bisa diakses: " + e.message, "err");
         }
       }
 
@@ -1263,7 +1547,6 @@
         cv.width = vid.videoWidth || 1280;
         cv.height = vid.videoHeight || 960;
         const ctx = cv.getContext("2d");
-        // Mirror hanya untuk kamera depan
         if (facingMode === "user") {
           ctx.translate(cv.width, 0);
           ctx.scale(-1, 1);
@@ -1277,7 +1560,7 @@
         document.getElementById("btnSnap").style.display = "none";
         document.getElementById("btnFlip").style.display = "none";
         killStream();
-        showToast("📸 Foto berhasil diambil!", "ok");
+        showToast("Foto berhasil diambil!", "ok");
       }
 
       function retake() {
@@ -1302,14 +1585,15 @@
         }
       }
 
-      /* ════════════════════════════════════════════════
-   SUBMIT  (ImgBB upload → POST ke Sheety)
-════════════════════════════════════════════════ */
+      /* ════════ SUBMIT ════════ */
       async function doSubmit() {
         const nama = document.getElementById("iNama").value.trim();
         const blok = radVal("blok");
         const bidang = radVal("bidang");
         const makan = radVal("makan");
+        const ig1 = document.getElementById("iIG1").value.trim();
+        const ig2 = document.getElementById("iIG2").value.trim();
+        const kNote = document.getElementById("iKonsumsiNote").value.trim();
 
         let ok = true;
         if (!nama) {
@@ -1329,70 +1613,58 @@
           ok = false;
         }
         if (!ok) {
-          showToast("⚠️ Lengkapi semua field terlebih dahulu!", "err");
+          showToast("Lengkapi semua field terlebih dahulu!", "err");
           return;
         }
         if (!photoB64) {
           errCard("cFoto");
-          showToast("📸 Ambil foto selfie dulu!", "err");
+          showToast("Ambil foto selfie dulu!", "err");
           return;
         }
 
         const now = new Date();
-        const ts = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+        const tgl = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()}`;
         const wkt = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
 
         const btn = document.getElementById("btnSub");
         btn.disabled = true;
-
-        // ── STEP 1: Upload foto ke ImgBB ──────────────────────
         btn.innerHTML =
           '<div class="brow"><div class="spin"></div><span>Mengunggah foto…</span></div>';
-        showToast("📤 Mengunggah foto ke ImgBB…", "wait");
+        showToast("Mengunggah foto ke ImgBB…", "wait");
 
-        let fotoUrl = "✅ Ada"; // fallback jika upload gagal
-        let imgBBOk = false;
-
+        let fotoUrl = "✅ Ada",
+          imgBBOk = false;
         try {
-          // Nama gambar = nama peserta (spasi → underscore)
-          const imgName = nama.replace(/\s+/g, "_");
-          const imgData = await uploadToImgBB(photoB64, imgName);
-          fotoUrl = imgData.url; // URL direct image → tersimpan di kolom foto
+          const imgData = await uploadToImgBB(
+            photoB64,
+            nama.replace(/\s+/g, "_"),
+          );
+          fotoUrl = imgData.url;
           imgBBOk = true;
         } catch (e) {
-          // Upload gagal → tetap lanjut, simpan teks biasa
           console.warn("ImgBB upload gagal:", e.message);
-          showToast("⚠️ Upload foto gagal, melanjutkan tanpa foto…", "err");
+          showToast("Upload foto gagal, melanjutkan tanpa foto…", "err");
           await new Promise((r) => setTimeout(r, 1800));
         }
 
-        // ── STEP 2: POST data ke Sheety ───────────────────────
         btn.innerHTML =
           '<div class="brow"><div class="spin"></div><span>Menyimpan ke Spreadsheet…</span></div>';
-        showToast("⏳ Menyimpan data ke Google Sheets…", "wait");
+        showToast("Menyimpan data ke Google Sheets…", "wait");
 
-        /*
-         * Kolom "foto" di Sheet berisi:
-         *   • URL direct image ImgBB  (jika upload berhasil) → bisa ditampilkan
-         *     langsung di cell dengan formula =IMAGE(G2) di sheet terpisah,
-         *     atau dibuka sebagai link.
-         *   • "✅ Ada" (jika upload gagal sebagai fallback)
-         *
-         * Untuk menampilkan gambar langsung di cell Google Sheets:
-         *   Buat kolom helper, isi formula: =IMAGE(G2)
-         *   (asumsikan kolom G = kolom foto)
-         */
-        // Format tanggal: DD/MM/YYYY
-        const tgl = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()}`;
+        let igField = ig1 ? "@" + ig1 : "";
+        if (ig2) igField += igField ? " | @" + ig2 : "@" + ig2;
+        let konsumsiField = makan + (kNote ? " (" + kNote + ")" : "");
 
         const body = {
           absen: {
             tanggal: tgl,
             nama: nama,
+            ig1: ig1 ? "@" + ig1 : "",
+            ig2: ig2 ? "@" + ig2 : "",
             blok: blok,
-            fokusBidang: bidang, // Sheet: "Fokus Bidang"
-            konsumsi: makan,
-            jamDatang: wkt, // Sheet: "Jam Datang"
+            fokusBidang: bidang,
+            konsumsi: konsumsiField,
+            jamDatang: wkt,
             foto: fotoUrl,
           },
         };
@@ -1403,41 +1675,46 @@
             headers: sheetyHeaders(true),
             body: JSON.stringify(body),
           });
-
           if (!r.ok) {
             const txt = await r.text();
             throw new Error(`HTTP ${r.status} — ${txt.slice(0, 150)}`);
           }
 
           hideToast();
+
+          const igBadge = igField
+            ? `<span style="display:inline-flex;align-items:center;gap:5px;margin-top:4px;background:#fdf4ff;padding:3px 11px;border-radius:20px;font-size:12px;color:#7c3aed;border:1px solid #e9d5ff;font-weight:600"><i class="bi bi-instagram"></i> ${igField}</span><br>`
+            : "";
+
           document.getElementById("sMeta").innerHTML =
             `<strong style="color:var(--tx);font-size:16px">${nama}</strong><br>
              ${blok} &nbsp;·&nbsp; ${bidang} &nbsp;·&nbsp; ${makan}<br>
+             ${igBadge}
              <span style="font-size:11px;color:var(--tx3)">📅 ${tgl} &nbsp;·&nbsp; ⏰ ${wkt} WIB</span><br>
              ${
                imgBBOk
-                 ? `<a href="${fotoUrl}" target="_blank"
-                     style="font-size:11px;color:var(--a3);text-decoration:underline;text-underline-offset:3px">
-                    🖼️ Lihat foto tersimpan
-                  </a>`
-                 : `<span style="font-size:11px;color:var(--tx3)">⚠️ Foto tidak terupload</span>`
+                 ? `<a href="${fotoUrl}" target="_blank" style="font-size:11px;color:var(--a3);text-decoration:underline;text-underline-offset:3px">Lihat foto tersimpan</a>`
+                 : `<span style="font-size:11px;color:var(--tx3)">Foto tidak terupload</span>`
              }`;
 
           document.getElementById("ss").classList.add("show");
           loadCount();
         } catch (e) {
-          showToast("❌ Gagal mengirim: " + e.message, "err");
+          showToast("Gagal mengirim: " + e.message, "err");
           btn.disabled = false;
           btn.innerHTML =
-            '<div class="brow"><span style="font-size:18px">✅</span><span>Kirim Absensi</span></div>';
+            '<div class="brow"><i class="bi bi-send-check-fill" style="font-size:17px"></i><span>Kirim Absensi</span></div>';
         }
       }
 
-      /* ════════════════════════════════════════════════
-   RESET
-════════════════════════════════════════════════ */
+      /* ════════ RESET ════════ */
       function doReset() {
         document.getElementById("iNama").value = "";
+        document.getElementById("iIG1").value = "";
+        document.getElementById("iIG2").value = "";
+        document.getElementById("iKonsumsiNote").value = "";
+        document.getElementById("igSecond").classList.remove("visible");
+        document.getElementById("igPreviewWrap").classList.remove("show");
         document
           .querySelectorAll("input[type=radio]")
           .forEach((r) => (r.checked = false));
@@ -1446,14 +1723,12 @@
         const btn = document.getElementById("btnSub");
         btn.disabled = false;
         btn.innerHTML =
-          '<div class="brow"><span style="font-size:18px">✅</span><span>Kirim Absensi</span></div>';
+          '<div class="brow"><i class="bi bi-send-check-fill" style="font-size:17px"></i><span>Kirim Absensi</span></div>';
         document.getElementById("ss").classList.remove("show");
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
-      /* ════════════════════════════════════════════════
-   HELPERS
-════════════════════════════════════════════════ */
+      /* ════════ HELPERS ════════ */
       const radVal = (n) =>
         document.querySelector(`input[name="${n}"]:checked`)?.value;
 
@@ -1467,8 +1742,12 @@
       function showToast(msg, type = "ok") {
         clearTimeout(_tt);
         const t = document.getElementById("toast");
-        document.getElementById("tIco").textContent =
-          { ok: "✅", err: "❌", wait: "⏳" }[type] || "ℹ️";
+        document.getElementById("tIco").innerHTML =
+          {
+            ok: '<i class="bi bi-check-circle-fill" style="color:#34d399;font-size:16px"></i>',
+            err: '<i class="bi bi-x-circle-fill" style="color:#f87171;font-size:16px"></i>',
+            wait: '<i class="bi bi-hourglass-split" style="color:#60a5fa;font-size:16px"></i>',
+          }[type] || "ℹ️";
         document.getElementById("tMsg").textContent = msg;
         t.className = `toast ${type} show`;
         if (type !== "wait")
@@ -1477,10 +1756,81 @@
       function hideToast() {
         document.getElementById("toast").classList.remove("show");
       }
-      /* ════════════════════════════════════════════════
-            Hide
-            ════════════════════════════════════════════════ */
+
+      /* HIDE utama */
       document.getElementById("utama").style.display = "none";
+
+      /* ════════ IG PANEL ════════ */
+      let igPanelOpen = false;
+
+      async function toggleIGPanel() {
+        igPanelOpen = !igPanelOpen;
+        const panel = document.getElementById("igPanel");
+        const btnRow = document.getElementById("btnViewIGRow");
+        if (igPanelOpen) {
+          panel.style.display = "block";
+          btnRow.innerHTML =
+            '<i class="bi bi-eye-slash-fill" style="font-size:17px"></i><span>Sembunyikan</span>';
+          await loadIGPanel();
+        } else {
+          panel.style.display = "none";
+          btnRow.innerHTML =
+            '<i class="bi bi-instagram" style="font-size:17px"></i><span>View Absen IG</span>';
+        }
+      }
+
+      async function loadIGPanel() {
+        const body = document.getElementById("igPanelBody");
+        const countEl = document.getElementById("igPanelCount");
+        body.innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;padding:16px 0;color:var(--tx4);font-size:13px;gap:8px"><div class="spin" style="border-top-color:#be185d;border-color:rgba(190,24,93,0.2)"></div>Memuat data...</div>`;
+        try {
+          const r = await fetch(SHEETY_URL, { headers: sheetyHeaders() });
+          if (!r.ok) throw new Error("HTTP " + r.status);
+          const d = await r.json();
+          const rows = (d.absen || []).filter((row) => row.ig1 || row.ig2);
+          countEl.textContent = (d.absen || []).length;
+
+          if (rows.length === 0) {
+            body.innerHTML = `<div style="text-align:center;padding:20px 0;color:var(--tx4);font-size:13px"><i class="bi bi-instagram" style="font-size:28px;display:block;margin-bottom:8px;opacity:0.3"></i>Belum ada yang mengisi IG</div>`;
+            return;
+          }
+
+          let html = `<div style="display:flex;flex-direction:column;gap:8px">`;
+          rows.forEach((row) => {
+            const name = row.nama || "—";
+            const handles = [row.ig1, row.ig2]
+              .filter(Boolean)
+              .map((s) => s.replace(/^@/, "").trim())
+              .filter(Boolean);
+
+            const igChips = handles
+              .map(
+                (h) =>
+                  `<a href="https://instagram.com/${h}" target="_blank" rel="noopener"
+                style="display:inline-flex;align-items:center;gap:4px;background:#fdf4ff;border:1px solid #e9d5ff;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;color:#7c3aed;text-decoration:none;transition:background 0.2s"
+                onmouseover="this.style.background='#ede9fe'" onmouseout="this.style.background='#fdf4ff'">
+                <i class="bi bi-instagram" style="font-size:11px;color:#be185d"></i>@${h}
+              </a>`,
+              )
+              .join(" ");
+
+            html += `<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--bd)">
+              <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#be185d,#7c3aed);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <i class="bi bi-person-fill" style="color:#fff;font-size:15px"></i>
+              </div>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:13px;font-weight:700;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${name}</div>
+                <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${igChips || '<span style="font-size:11px;color:var(--tx4)">Tidak ada IG</span>'}</div>
+              </div>
+              <div style="font-size:10px;color:var(--tx4);flex-shrink:0;text-align:right">${row.jamDatang || row.jamDatang || ""}</div>
+            </div>`;
+          });
+          html += `</div>`;
+          body.innerHTML = html;
+        } catch (e) {
+          body.innerHTML = `<div style="text-align:center;padding:16px 0;color:var(--red);font-size:12px"><i class="bi bi-exclamation-circle"></i> Gagal memuat: ${e.message}</div>`;
+        }
+      }
     </script>
   </body>
 </html>
