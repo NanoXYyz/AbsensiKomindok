@@ -580,25 +580,58 @@
         transform: scaleX(1);
       }
       .btn-flip {
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.2);
-        border: 1.5px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.22);
+        border: 1.5px solid rgba(255, 255, 255, 0.4);
         color: #fff;
-        font-size: 18px;
+        font-size: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        transition: all 0.2s;
+        transition: all 0.22s;
         flex-shrink: 0;
+        backdrop-filter: blur(6px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       }
       .btn-flip:hover {
-        background: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.35);
       }
       .btn-flip:active {
-        transform: scale(0.88) rotate(180deg);
+        transform: scale(0.85) rotate(180deg);
+      }
+      /* Flip button overlay inside cam-live (like native camera) */
+      .cam-flip-overlay {
+        position: absolute;
+        bottom: 14px;
+        right: 14px;
+        z-index: 10;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.45);
+        border: 1.5px solid rgba(255, 255, 255, 0.35);
+        color: #fff;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        transition: all 0.22s;
+      }
+      .cam-flip-overlay:active {
+        transform: scale(0.85);
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .cam-flip-overlay i {
+        transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .cam-flip-overlay.spinning i {
+        transform: rotate(180deg);
       }
       .cam-badge {
         position: absolute;
@@ -1219,6 +1252,14 @@
             <video id="vid" autoplay playsinline muted></video>
             <div class="cam-frame"></div>
             <div class="cam-badge" id="camBadge">DEPAN</div>
+            <button
+              class="cam-flip-overlay"
+              id="camFlipOverlay"
+              onclick="flipCam()"
+              title="Ganti kamera"
+            >
+              <i class="bi bi-arrow-repeat"></i>
+            </button>
           </div>
           <canvas id="canvas"></canvas>
           <img id="preview" alt="Foto selfie" />
@@ -1236,6 +1277,7 @@
               id="btnFlip"
               onclick="flipCam()"
               title="Ganti kamera"
+              style="display: none"
             >
               <i class="bi bi-arrow-repeat"></i>
             </button>
@@ -1344,21 +1386,115 @@
 
     <!-- SUCCESS SCREEN -->
     <div class="sscreen" id="ss">
-      <div class="sring">
-        <i class="bi bi-check-lg" style="color: var(--a3)"></i>
-      </div>
-      <div class="stitle">Absensi Berhasil!</div>
-      <div class="sdiv"></div>
-      <div class="smeta" id="sMeta"></div>
-      <button
-        class="bsub"
-        style="max-width: 210px; margin-top: 8px"
-        onclick="doReset()"
+      <div
+        style="
+          width: 100%;
+          max-width: 430px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 14px;
+          overflow-y: auto;
+          max-height: 100vh;
+          padding: 32px 20px 40px;
+        "
       >
-        <div class="brow">
-          <i class="bi bi-arrow-repeat"></i> <span>Absen Lagi</span>
+        <div class="sring">
+          <i class="bi bi-check-lg" style="color: var(--a3)"></i>
         </div>
-      </button>
+        <div class="stitle">Absensi Berhasil!</div>
+        <div class="sdiv"></div>
+        <div class="smeta" id="sMeta"></div>
+        <button
+          class="bsub"
+          style="max-width: 210px; margin-top: 4px"
+          onclick="doReset()"
+        >
+          <div class="brow">
+            <i class="bi bi-arrow-repeat"></i> <span>Absen Lagi</span>
+          </div>
+        </button>
+
+        <!-- IG Hadir Section -->
+        <div style="width: 100%; margin-top: 6px">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-bottom: 10px;
+              padding: 0 2px;
+            "
+          >
+            <div
+              style="
+                width: 28px;
+                height: 28px;
+                border-radius: 8px;
+                background: linear-gradient(135deg, #be185d, #7c3aed);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+              "
+            >
+              <i
+                class="bi bi-instagram"
+                style="color: #fff; font-size: 13px"
+              ></i>
+            </div>
+            <span style="font-size: 13px; font-weight: 700; color: var(--tx2)"
+              >Yang Sudah Hadir</span
+            >
+            <div
+              id="ssIGCount"
+              style="
+                margin-left: auto;
+                background: #fce7f3;
+                color: #be185d;
+                border-radius: 20px;
+                padding: 2px 9px;
+                font-size: 11px;
+                font-weight: 700;
+                font-family: &quot;JetBrains Mono&quot;, monospace;
+              "
+            >
+              0
+            </div>
+          </div>
+          <div
+            id="ssIGBody"
+            style="
+              background: var(--s1);
+              border: 1px solid #f9a8d4;
+              border-radius: 14px;
+              overflow: hidden;
+              min-height: 80px;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                color: var(--tx4);
+                font-size: 13px;
+                gap: 8px;
+              "
+            >
+              <div
+                class="spin"
+                style="
+                  border-top-color: #be185d;
+                  border-color: rgba(190, 24, 93, 0.2);
+                "
+              ></div>
+              Memuat peserta...
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- TOAST -->
@@ -1530,7 +1666,8 @@
           document.getElementById("camCtrl").style.display = "flex";
           document.getElementById("btnSnap").style.display = "block";
           document.getElementById("btnRetake").style.display = "none";
-          document.getElementById("btnFlip").style.display = "flex";
+          document.getElementById("btnFlip").style.display = "none";
+          document.getElementById("camFlipOverlay").style.display = "flex";
         } catch (e) {
           showToast("Kamera tidak bisa diakses: " + e.message, "err");
         }
@@ -1538,6 +1675,9 @@
 
       async function flipCam() {
         facingMode = facingMode === "user" ? "environment" : "user";
+        const btn = document.getElementById("camFlipOverlay");
+        btn.classList.add("spinning");
+        setTimeout(() => btn.classList.remove("spinning"), 400);
         await startCam(facingMode);
       }
 
@@ -1559,6 +1699,7 @@
         document.getElementById("btnRetake").style.display = "flex";
         document.getElementById("btnSnap").style.display = "none";
         document.getElementById("btnFlip").style.display = "none";
+        document.getElementById("camFlipOverlay").style.display = "none";
         killStream();
         showToast("Foto berhasil diambil!", "ok");
       }
@@ -1699,11 +1840,80 @@
 
           document.getElementById("ss").classList.add("show");
           loadCount();
+          loadSSIGPanel();
         } catch (e) {
           showToast("Gagal mengirim: " + e.message, "err");
           btn.disabled = false;
           btn.innerHTML =
             '<div class="brow"><i class="bi bi-send-check-fill" style="font-size:17px"></i><span>Kirim Absensi</span></div>';
+        }
+      }
+
+      /* ════════ SUCCESS SCREEN IG PANEL ════════ */
+      async function loadSSIGPanel() {
+        const body = document.getElementById("ssIGBody");
+        const countEl = document.getElementById("ssIGCount");
+        body.innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;padding:20px 0;color:var(--tx4);font-size:13px;gap:8px"><div class="spin" style="border-top-color:#be185d;border-color:rgba(190,24,93,0.2)"></div>Memuat peserta...</div>`;
+        try {
+          const r = await fetch(SHEETY_URL, { headers: sheetyHeaders() });
+          if (!r.ok) throw new Error("HTTP " + r.status);
+          const d = await r.json();
+          const all = d.absen || [];
+          countEl.textContent = all.length;
+
+          if (all.length === 0) {
+            body.innerHTML = `<div style="text-align:center;padding:24px 0;color:var(--tx4);font-size:13px"><i class="bi bi-people" style="font-size:28px;display:block;margin-bottom:8px;opacity:0.3"></i>Belum ada peserta</div>`;
+            return;
+          }
+
+          let html = `<div style="padding:4px 0">`;
+          all.forEach((row, i) => {
+            const name = row.nama || "—";
+            const handles = [row.ig1, row.ig2]
+              .filter(Boolean)
+              .map((s) => s.replace(/^@/, "").trim())
+              .filter(Boolean);
+
+            const igChips = handles.length
+              ? handles
+                  .map(
+                    (h) =>
+                      `<a href="https://instagram.com/${h}" target="_blank" rel="noopener"
+                    style="display:inline-flex;align-items:center;gap:3px;background:#fdf4ff;border:1px solid #e9d5ff;border-radius:20px;padding:2px 9px;font-size:11px;font-weight:700;color:#7c3aed;text-decoration:none"
+                    onmouseover="this.style.background='#ede9fe'" onmouseout="this.style.background='#fdf4ff'">
+                    <i class="bi bi-instagram" style="font-size:10px;color:#be185d"></i>@${h}
+                  </a>`,
+                  )
+                  .join(" ")
+              : `<span style="font-size:11px;color:var(--tx4);font-style:italic">Tidak ada IG</span>`;
+
+            const colors = [
+              "#be185d",
+              "#7c3aed",
+              "#2563eb",
+              "#059669",
+              "#d97706",
+            ];
+            const c = colors[i % colors.length];
+
+            html += `<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;${i < all.length - 1 ? "border-bottom:1px solid var(--bd)" : ""}">
+              <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,${c},${colors[(i + 1) % colors.length]});display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;font-weight:700;color:#fff">
+                ${name.charAt(0).toUpperCase()}
+              </div>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:13px;font-weight:700;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${name}</div>
+                <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">${igChips}</div>
+              </div>
+              <div style="font-size:10px;color:var(--tx4);flex-shrink:0;text-align:right;line-height:1.5">
+                ${row.blok ? `<div>${row.blok}</div>` : ""}
+                <div>${row.jamDatang || ""}</div>
+              </div>
+            </div>`;
+          });
+          html += `</div>`;
+          body.innerHTML = html;
+        } catch (e) {
+          body.innerHTML = `<div style="text-align:center;padding:16px 0;color:var(--red);font-size:12px"><i class="bi bi-exclamation-circle"></i> Gagal memuat: ${e.message}</div>`;
         }
       }
 
